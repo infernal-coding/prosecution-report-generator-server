@@ -1,14 +1,15 @@
 package main
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/infernal-coding/prosecution-report-generator-server/web"
 	"log"
-	"net/http"
 )
 
 func main() {
-	router := http.NewServeMux()
-	router.HandleFunc("/api/v1/status/health", web.HandleHealth)
+	router := gin.Default()
 
-	log.Fatal(http.ListenAndServe(":8080", router))
+	router.GET("/api/v1/status/health", web.GetStatusHealth)
+
+	log.Fatal(router.Run())
 }

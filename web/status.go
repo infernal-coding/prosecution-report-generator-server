@@ -1,10 +1,10 @@
 package web
 
 import (
-	"fmt"
+	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
-func HandleHealth(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "UP")
+func GetStatusHealth(c *gin.Context) {
+	c.String(http.StatusOK, "UP")
 }
