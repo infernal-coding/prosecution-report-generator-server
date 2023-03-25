@@ -1,0 +1,61 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+    branches:
+      - main
+
+jobs:
+  style:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '^1.20.2'
+      - name: Check Code Format
+        id: check-format
+        run: test -z $(gofmt -l .)
+      - name: List Malformed Files
+        if: failure() && steps.check-format.outcome == 'failure'
+        run: gofmt -l .
+
+  test:
+    runs-on: ubuntu-latest
+    needs: style
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '^1.20.2'
+      - name: Run Tests
+        run: go test ./...
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '^1.20.2'
+      - name: Build Server
+        run: go build -o prosecution-report-generator-server
+      - name: Upload Server
+        uses: actions/upload-artifact@v3
+        with:
+          name: server
+          path: prosecution-report-generator-server
