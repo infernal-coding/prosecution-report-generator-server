@@ -5,6 +5,11 @@ import (
 	"net/http"
 )
 
-func GetStatusHealth(c *gin.Context) {
+func RegisterStatusEndpoints(group *gin.RouterGroup) {
+	v1 := group.Group("/v1/status")
+	v1.GET("/health", getStatusHealth)
+}
+
+func getStatusHealth(c *gin.Context) {
 	c.String(http.StatusOK, "UP")
 }

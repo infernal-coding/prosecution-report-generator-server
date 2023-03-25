@@ -9,7 +9,8 @@ import (
 func main() {
 	router := gin.Default()
 
-	router.GET("/api/v1/status/health", web.GetStatusHealth)
+	api := router.Group("/api")
+	web.RegisterStatusEndpoints(api)
 
 	log.Fatal(router.Run())
 }
