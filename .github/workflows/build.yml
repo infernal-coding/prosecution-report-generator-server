@@ -13,7 +13,7 @@ on:
       - main
 
 jobs:
-  style:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,6 +22,8 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version-file: go.mod
+      - name: Download Dependencies
+        run: go mod download
       - name: Check Code Format
         id: check-format
         run: test -z $(gofmt -l .)
