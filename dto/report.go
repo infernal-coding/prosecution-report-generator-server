@@ -1,11 +1,14 @@
 package dto
 
+// ReportData contains the data for a report.
 type ReportData struct {
 	Header  ReportHeader  `json:"header"`
 	Content ReportContent `json:"content"`
 	Footer  ReportFooter  `json:"footer"`
 }
 
+// ReportHeader contains the data for the report header.
+// This specifies the match the report is associated to.
 type ReportHeader struct {
 	Team            string     `json:"team"`
 	Home            string     `json:"home"`
@@ -20,6 +23,8 @@ type ReportHeader struct {
 	MatchClass      MatchClass `json:"matchClass"`
 }
 
+// ReportContent contains the main content of the report.
+// This specifies the incident that happened at the match.
 type ReportContent struct {
 	Subject       string `json:"subject"`
 	PassportId    string `json:"passportId"`
@@ -40,6 +45,8 @@ type ReportContent struct {
 	Other         string `json:"other"`
 }
 
+// ReportFooter contains the data for the footer of the report.
+// This specifies the authoring referee and the recipients of the report.
 type ReportFooter struct {
 	Name       string           `json:"name"`
 	Street     string           `json:"street"`
@@ -51,12 +58,16 @@ type ReportFooter struct {
 	Recipients ReportRecipients `json:"recipients"`
 }
 
+// MatchClass contains the available options of the match class.
+// A match is either classified as federation, private or other.
 type MatchClass struct {
 	Federation bool `json:"federation"`
 	Private    bool `json:"private"`
 	Other      bool `json:"other"`
 }
 
+// ReportRecipients contains the possible recipients of a report.
+// The report can be sent to one or more recipients.
 type ReportRecipients struct {
 	GSO bool `json:"gso"`
 	KSO bool `json:"kso"`
