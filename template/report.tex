@@ -1,0 +1,176 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\usepackage[
+    top=1.5cm,
+    bottom=0.6cm,
+    left=1.5cm,
+    right=1.5cm
+]{geometry}
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc}
+\usepackage{etoolbox}
+\usepackage{footnote}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+    \IfFileExists{parskip.sty}{%
+        \usepackage{parskip}
+        \usepackage{wasysym}
+    }{% else
+        \setlength{\parindent}{0pt}
+        \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+    \KOMAoptions{parskip=half}}
+\makeatother
+
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+
+\makesavenoteenv{longtable}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+    \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen}
+\urlstyle{same}
+\hypersetup{
+    hidelinks,
+    pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+    \pagestyle{empty}
+
+    % \hfill
+    % \includegraphics[height=0.75972in]{logo}
+    % \\
+    \Large\textbf{Sonderbericht zu besonderen Vorkommnissen}\normalsize
+
+    \begin{longtable}[]{@{}
+        |>{\raggedright\arraybackslash}p{(\columnwidth - 0\tabcolsep) * \real{1.0000}}|@{}}
+        \hline
+        \endhead
+        \begin{center}
+            beim Spiel der {{ .Header.Team }} - Mannschaften
+
+                {{ .Header.Home }} - {{ .Header.Away }}
+
+            am {{ .Header.Date }} auf dem Sportplatz in {{ .Header.Place }}.
+
+            Halbzeitstand: {{ .Header.HomeScoreHalf }} - {{ .Header.AwayScoreHalf }} Endstand: {{ .Header.HomeScore }} - {{ .Header.AwayScore }} Spielkennung: {{ .Header.MatchIdentifier }}
+
+            Spielklasse:
+                {{ if .Header.MatchClass.Federation }} \checkmark{} {{ else }} $\Box$ {{ end }} Verbandsspiel
+                {{ if .Header.MatchClass.Private }} \checkmark{} {{ else }} $\Box$ {{ end }} Privatspiel
+                {{ if .Header.MatchClass.Other }} \checkmark{} {{ else }} $\Box$ {{ end }} Sonstiges Spiel
+        \end{center}
+        \\
+        \hline
+    \end{longtable}
+
+    \def\arraystretch{1.2}
+    \begin{longtable}[]{@{}
+        |>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.37}}
+        |>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.63}}|@{}}
+        \hline
+        \endhead
+        \textbf{Betreff} & \textbf{ {{ .Content.Subject }} }
+
+        \textbf{Passnummer: {{ .Content.PassportId }}} \\\hline
+        \textbf{Wer} beging das Vergehen? (z.B. Spieler, Trainer, Zuschauer usw. und dessen Verein) & {{ .Content.Who }} \\\hline
+        \textbf{Wann} ereignete sich das Vergehen? (Spielminute)                                                                 & {{ .Content.When }}          \\\hline
+        \textbf{Wie} war der Spielstand?                                                                                         & {{ .Content.How }}           \\\hline
+        \textbf{Was}\footnote{allgemein gehaltene Begriffe (beleidigte,
+            beschimpfte) sind nicht zu verwenden. Es muss konkret angegeben werden
+            was z.B. gesagt wurde. Gleichwohl sind Absicht oder andere nicht
+            messbare Begriffe zu vermeiden, genauso wie Begriffe, die in
+            Sportgerichtsurteilen vorkommen (z.B. rohes Spiel, Tätlichkeit)}
+        war das Vergehen? (genaue Beschreibung was die fehlbare Person gemacht hat)                                              & {{ .Content.What }}          \\\hline
+        \textbf{Gegen wen} ging das Vergehen? (z.B. Gegenspieler, Mitspieler, Zuschauer usw.) & {{ .Content.Against }} \\\hline
+        \textbf{Wo} war das Vergehen? (genauer Ort des Vergehens)                                                                & {{ .Content.Where }}         \\\hline
+        \textbf{Wo} war der Ball beim Vergehen?                                                                                  & {{ .Content.WhereBall }}     \\\hline
+        \textbf{Wo} stand der SR bzw. der SRA beim Vorfall?                                                                      & {{ .Content.WhereReferee }}  \\\hline
+        \textbf{War} der Spieler bereits verwarnt?                                                                               & {{ .Content.AlreadyWarned }} \\\hline
+        \textbf{Wurde} der fehlbare Spieler vorher provoziert oder gefoult?                                                      & {{ .Content.WasProvoked }}   \\\hline
+        Konnte der gefoulte \textbf{Spieler weiterspielen} oder \textbf{musste er ausgewechselt werden}? & {{ .Content.CouldPlayOn }} \\\hline
+        \textbf{Wie} und \textbf{wo} wurde das Spiel fortgesetzt?                                                                & {{ .Content.HowContinued }}  \\\hline
+        \textbf{Welche} Wirkung wurde bei der Spielfortsetzung erzielt? (z.B. bei SST oder FST in Tornähe) & {{ .Content.WhatEffect }} \\\hline
+        \textbf{Verhalten} des fehlbaren Spielers \textbf{nach} dem Feldverweis (auf dem Platz / in der Kabine / nach dem Spiel) & {{ .Content.BehaviorAfter }} \\\hline
+        \textbf{Sonstiges} (z.B. witterungsbedingter Spielabbruch, Passrechtliches und dgl.) & {{ .Content.Other }} \\
+        \hline
+    \end{longtable}
+
+    \begin{longtable}[]{@{}
+        |>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+        |>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}|@{}}
+        \hline
+        \endhead
+        \begin{minipage}[t]{\linewidth}
+            \raggedright
+            {{ .Footer.Place }}, den \today \\
+            \strut \\
+            {{ .Footer.Name }}
+
+            Schiedsrichter\strut
+        \end{minipage} & \begin{minipage}[t]{\linewidth}
+                             \raggedright
+                             Kontaktdaten SR:\\
+                             \emph{Straße: {{ .Footer.Street }} PLZ: {{ .Footer.Zip }} Ort: {{ .Footer.Place }}\\
+                             Schiedsrichtergruppe: {{ .Footer.Group }}}
+
+                             \emph{Angaben freigestellt:}
+
+                             \emph{Tel.: {{ .Footer.Phone }} Email: {{ .Footer.Mail }}}\strut
+        \end{minipage} \\
+        \hline
+        \begin{minipage}[t]{\linewidth}
+            \raggedright
+            Verteiler:
+
+            \checkmark{} Original zum Spielbericht
+
+                {{ if .Footer.Recipients.GSO }} \checkmark{} {{ else }} $\Box$ {{ end }} GSO
+                {{ if .Footer.Recipients.KSO }} \checkmark{} {{ else }} $\Box$ {{ end }} KSO
+                {{ if .Footer.Recipients.BSO }} \checkmark{} {{ else }} $\Box$ {{ end }} BSO
+                {{ if .Footer.Recipients.VSO }} \checkmark{} {{ else }} $\Box$ {{ end }} VSO\\
+            \checkmark{} SR -- eigene Unterlagen\strut
+        \end{minipage} & \begin{minipage}[t]{\linewidth}
+                             \raggedright
+                             Durchschrift an den betroffenen Verein:
+
+                             Versand über DFB-Net SpielPlus:
+
+                             Sonstige Mailadresse:\\
+                             \emph{ }\strut
+        \end{minipage} \\
+        \hline
+    \end{longtable}
+
+\end{document}
