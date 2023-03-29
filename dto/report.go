@@ -1,5 +1,7 @@
 package dto
 
+import "errors"
+
 // ReportData contains the data for a report.
 type ReportData struct {
 	Header  ReportHeader  `json:"header"`
@@ -66,6 +68,18 @@ type MatchClass struct {
 	Other      bool `json:"other"`
 }
 
+// Validate validates that exactly one option for the match class is set to true.
+func (matchClass *MatchClass) Validate() error {
+	federation := matchClass.Federation
+	private := matchClass.Private
+	other := matchClass.Other
+
+	if (federation && !private && !other) || (!federation && private && !other) || (!federation && !private && other) {
+		return nil
+	}
+	return errors.New("exactly one match class must be chosen")
+}
+
 // ReportRecipients contains the possible recipients of a report.
 // The report can be sent to one or more recipients.
 type ReportRecipients struct {
@@ -73,4 +87,17 @@ type ReportRecipients struct {
 	KSO bool `json:"kso"`
 	BSO bool `json:"bso"`
 	VSO bool `json:"vso"`
+}
+
+// Validate validates that at least one recipient is set to true.
+func (reportRecipients *ReportRecipients) Validate() error {
+	gso := reportRecipients.GSO
+	kso := reportRecipients.KSO
+	bso := reportRecipients.BSO
+	vso := reportRecipients.VSO
+
+	if !gso && !kso && !bso && !vso {
+		return errors.New("at least one recipient must be chosen")
+	}
+	return nil
 }
