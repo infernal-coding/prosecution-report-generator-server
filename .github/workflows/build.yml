@@ -21,7 +21,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
-          go-version: '^1.20.2'
+          go-version-file: go.mod
       - name: Check Code Format
         id: check-format
         run: test -z $(gofmt -l .)
@@ -38,7 +38,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
-          go-version: '^1.20.2'
+          go-version-file: go.mod
       - name: Run Tests
         run: go test ./...
 
@@ -51,7 +51,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
-          go-version: '^1.20.2'
+          go-version-file: go.mod
       - name: Build Server
         run: go build -o prosecution-report-generator-server
       - name: Upload Server
