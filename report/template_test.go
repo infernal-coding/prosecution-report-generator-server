@@ -2,10 +2,13 @@ package report
 
 import (
 	"bytes"
+	_ "embed"
 	"github.com/infernal-coding/prosecution-report-generator-server/dto"
-	"os"
 	"testing"
 )
+
+//go:embed template/report_test.txt
+var expectedResult []byte
 
 func TestSetupTemplate(t *testing.T) {
 	SetupTemplate()
@@ -60,11 +63,6 @@ func TestExecuteTemplate(t *testing.T) {
 		return
 	}
 
-	expectedResult, err := os.ReadFile("template/report_test.txt")
-	if err != nil {
-		t.Errorf("unexpected error while reading result: %v", err.Error())
-		return
-	}
 	if result.String() != string(expectedResult) {
 		t.Errorf("resulting report is not matching expecting result, generated report:\n%v", result.String())
 	}

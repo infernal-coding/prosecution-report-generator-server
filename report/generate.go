@@ -12,6 +12,7 @@ const (
 	PdfName = "report.pdf"
 )
 
+// GenerateReport generates the pdf file for the given report with pdflatex.
 func GenerateReport(report string) ([]byte, error) {
 	tmpDir, err := createReportTexFile(report)
 	if err != nil {

@@ -40,6 +40,8 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version-file: go.mod
+      - name: Setup TeXLive
+        run: apt install texlive texlive-lang-german texlive-latex-extra -y
       - name: Run Tests
         run: go test ./...
 
