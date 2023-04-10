@@ -45,6 +45,9 @@ jobs:
         with:
           packages: >-
             scheme-basic
+            pdflatex
+            lang-german
+            latex-extra
       - name: Run Tests
         run: go test ./...
 
