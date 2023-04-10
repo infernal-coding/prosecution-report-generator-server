@@ -1,0 +1,176 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\usepackage[
+    top=1.5cm,
+    bottom=0.6cm,
+    left=1.5cm,
+    right=1.5cm
+]{geometry}
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc}
+\usepackage{etoolbox}
+\usepackage{footnote}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+    \IfFileExists{parskip.sty}{%
+        \usepackage{parskip}
+        \usepackage{wasysym}
+    }{% else
+        \setlength{\parindent}{0pt}
+        \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+    \KOMAoptions{parskip=half}}
+\makeatother
+
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+
+\makesavenoteenv{longtable}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+    \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen}
+\urlstyle{same}
+\hypersetup{
+    hidelinks,
+    pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+    \pagestyle{empty}
+
+    % \hfill
+    % \includegraphics[height=0.75972in]{logo}
+    % \\
+    \Large\textbf{Sonderbericht zu besonderen Vorkommnissen}\normalsize
+
+    \begin{longtable}[]{@{}
+        |>{\raggedright\arraybackslash}p{(\columnwidth - 0\tabcolsep) * \real{1.0000}}|@{}}
+        \hline
+        \endhead
+        \begin{center}
+            beim Spiel der Herren - Mannschaften
+
+                SC Haudaneben - FC Krumme Haxn
+
+            am 01.07.2022 auf dem Sportplatz in Grossköllnbach.
+
+            Halbzeitstand: 0 - 1 Endstand: 2 - 1 Spielkennung: 12345
+
+            Spielklasse:
+                 $\Box$  Verbandsspiel
+                 \checkmark{}  Privatspiel
+                 $\Box$  Sonstiges Spiel
+        \end{center}
+        \\
+        \hline
+    \end{longtable}
+
+    \def\arraystretch{1.2}
+    \begin{longtable}[]{@{}
+        |>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.37}}
+        |>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.63}}|@{}}
+        \hline
+        \endhead
+        \textbf{Betreff} & \textbf{ Fehlendes Passfoto }
+
+        \textbf{Passnummer: 42} \\\hline
+        \textbf{Wer} beging das Vergehen? (z.B. Spieler, Trainer, Zuschauer usw. und dessen Verein) & Max Mustermann (8) vom SC Haudaneben \\\hline
+        \textbf{Wann} ereignete sich das Vergehen? (Spielminute)                                                                 &           \\\hline
+        \textbf{Wie} war der Spielstand?                                                                                         &            \\\hline
+        \textbf{Was}\footnote{allgemein gehaltene Begriffe (beleidigte,
+            beschimpfte) sind nicht zu verwenden. Es muss konkret angegeben werden
+            was z.B. gesagt wurde. Gleichwohl sind Absicht oder andere nicht
+            messbare Begriffe zu vermeiden, genauso wie Begriffe, die in
+            Sportgerichtsurteilen vorkommen (z.B. rohes Spiel, Tätlichkeit)}
+        war das Vergehen? (genaue Beschreibung was die fehlbare Person gemacht hat)                                              &           \\\hline
+        \textbf{Gegen wen} ging das Vergehen? (z.B. Gegenspieler, Mitspieler, Zuschauer usw.) &  \\\hline
+        \textbf{Wo} war das Vergehen? (genauer Ort des Vergehens)                                                                &          \\\hline
+        \textbf{Wo} war der Ball beim Vergehen?                                                                                  &      \\\hline
+        \textbf{Wo} stand der SR bzw. der SRA beim Vorfall?                                                                      &   \\\hline
+        \textbf{War} der Spieler bereits verwarnt?                                                                               &  \\\hline
+        \textbf{Wurde} der fehlbare Spieler vorher provoziert oder gefoult?                                                      &    \\\hline
+        Konnte der gefoulte \textbf{Spieler weiterspielen} oder \textbf{musste er ausgewechselt werden}? &  \\\hline
+        \textbf{Wie} und \textbf{wo} wurde das Spiel fortgesetzt?                                                                &   \\\hline
+        \textbf{Welche} Wirkung wurde bei der Spielfortsetzung erzielt? (z.B. bei SST oder FST in Tornähe) &  \\\hline
+        \textbf{Verhalten} des fehlbaren Spielers \textbf{nach} dem Feldverweis (auf dem Platz / in der Kabine / nach dem Spiel) &  \\\hline
+        \textbf{Sonstiges} (z.B. witterungsbedingter Spielabbruch, Passrechtliches und dgl.) & Bei Herrn Mustermann fehlte bis nach Spielende das Foto im ESB. \\
+        \hline
+    \end{longtable}
+
+    \begin{longtable}[]{@{}
+        |>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+        |>{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}|@{}}
+        \hline
+        \endhead
+        \begin{minipage}[t]{\linewidth}
+            \raggedright
+            Straubing, den \today \\
+            \strut \\
+            Franz Huber
+
+            Schiedsrichter\strut
+        \end{minipage} & \begin{minipage}[t]{\linewidth}
+                             \raggedright
+                             Kontaktdaten SR:\\
+                             \emph{Straße: Hauptstraße 1 PLZ: 94315 Ort: Straubing\\
+                             Schiedsrichtergruppe: Straubing}
+
+                             \emph{Angaben freigestellt:}
+
+                             \emph{Tel.:  Email: huber@test.de}\strut
+        \end{minipage} \\
+        \hline
+        \begin{minipage}[t]{\linewidth}
+            \raggedright
+            Verteiler:
+
+            \checkmark{} Original zum Spielbericht
+
+                 \checkmark{}  GSO
+                 $\Box$  KSO
+                 $\Box$  BSO
+                 $\Box$  VSO\\
+            \checkmark{} SR -- eigene Unterlagen\strut
+        \end{minipage} & \begin{minipage}[t]{\linewidth}
+                             \raggedright
+                             Durchschrift an den betroffenen Verein:
+
+                             Versand über DFB-Net SpielPlus:
+
+                             Sonstige Mailadresse:\\
+                             \emph{ }\strut
+        \end{minipage} \\
+        \hline
+    \end{longtable}
+
+\end{document}
