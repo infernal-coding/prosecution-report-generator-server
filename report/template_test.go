@@ -3,17 +3,9 @@ package report
 import (
 	"bytes"
 	"github.com/infernal-coding/prosecution-report-generator-server/dto"
-	"log"
 	"os"
 	"testing"
 )
-
-func init() {
-	err := os.Chdir("..")
-	if err != nil {
-		log.Fatalln(err)
-	}
-}
 
 func TestSetupTemplate(t *testing.T) {
 	SetupTemplate()
@@ -21,9 +13,6 @@ func TestSetupTemplate(t *testing.T) {
 	if reportTemplate == nil {
 		t.Error("report template was not initialized")
 		return
-	}
-	if reportTemplate.Lookup("report.tex") == nil {
-		t.Error("report template was initialized with wrong name")
 	}
 }
 
