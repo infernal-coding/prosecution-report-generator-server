@@ -41,13 +41,7 @@ jobs:
         with:
           go-version-file: go.mod
       - name: Setup TeX Live
-        uses: teatimeguest/setup-texlive-action@v2
-        with:
-          packages: >-
-            scheme-basic
-            pdflatex
-            lang-german
-            latex-extra
+        run: sudo apt update && sudo apt install texlive texlive-lang-german texlive-latex-extra -y
       - name: Run Tests
         run: go test ./...
 
